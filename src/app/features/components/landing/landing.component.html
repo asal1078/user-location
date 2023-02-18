@@ -1,0 +1,59 @@
+
+<div class="flex flex-row justify-center">
+    <div class="basis-1/2 shadow-lg rounded-lg mt-7 p-7">
+        <h1 class="text-cyan-700 font-black text-3xl p-4 bg-gray-100">
+            share your location!
+        </h1>
+       
+        <form (ngSubmit)="submitData()">
+            <div class="mt-5 grid grid-cols-2 gap-6">
+                <div>
+                    <label for="name" class="font-bold label">
+                        location name:
+                    </label>
+                    <br>
+                    <input name="name" id="name" class="mx-5" class="input w-full" [(ngModel)]="location.locationName">
+                </div>
+                <div>
+                    <label for="type" class="font-bold label">
+                        location type:
+                    </label>
+                    <ng-select name="type" id="type" [(ngModel)]="location.locationType">
+                        <ng-option *ngFor="let type of locationTypes" [value]="type.name">{{type.name}}</ng-option>
+                    </ng-select>
+                </div>
+            </div>
+    
+            <div class="mt-5">
+                <label for="name" class="font-bold label">
+                    choose location:
+                </label>
+                <br>
+                <app-map (getLatLong)="getLocation($event)" [isReset]="resetMap"></app-map>
+            </div>
+    
+            <div class="mt-5">
+                <app-file-input (getFileSrc)="getLogo($event)" [isdeleteFile]="isDelete"></app-file-input>
+            </div>
+
+            <hr class="my-5">
+
+            <div class="flex flex-row justify-between">
+                <div>
+                    <button type="submit" class="bg-emerald-700 text-white font-bold px-5 py-3 rounded-lg">submit</button>
+                    <button type="reset" class="bg-rose-700 text-white font-bold px-5 py-3 rounded-lg mx-4">cancele</button>
+                </div>
+                <div>
+                    <button
+                    (click)="openFullScreen()" 
+                    class="bg-sky-700 text-white font-bold px-5 py-3 rounded-lg disabled:bg-gray-500">
+                        open selected locations on map
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+

@@ -1,0 +1,9 @@
+.map-container {
+    height: 400px;
+  }
+
+.custom-icon {
+  content: url(../../../../assets/images/location.png);
+  height: 100px;
+  width: 100px;
+}

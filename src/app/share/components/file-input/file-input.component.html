@@ -1,0 +1,12 @@
+<div class="upload-btn-wrapper mt-4">
+    <button class="btn border-4 border-gray-300" [ngClass]="{'text-cyan-700 border-cyan-700' : src !== ''}">
+      {{ src !== '' ? 'logo is uploaded' : 'upload logo' }}
+    </button>
+    <input
+      type="file"
+      (change)="getImage($event)"
+    />
+  </div>
+  <button class="py-2 px-2 text-red-700 font-bold mx-2" *ngIf="src !== ''" name="image" (click)="deleteFile()">
+    delete
+</button>
